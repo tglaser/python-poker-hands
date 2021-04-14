@@ -1,7 +1,7 @@
 import unittest
 
 
-class TestTennis(unittest.TestCase):
+class SimplePokerHandsTest(unittest.TestCase):
 
     def test_initial_fail(self):
         self.fail("This is the inital test")
