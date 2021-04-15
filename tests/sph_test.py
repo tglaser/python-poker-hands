@@ -2,8 +2,11 @@ import unittest
 
 
 class SimplePokerHands:
-    def bestFromHand(self, param):
-        return sorted(param)[0]
+    def bestFromHand(self, handCards):
+        return sorted(handCards, key=self.readNumericValue)[0]
+
+    def readNumericValue(self, card):
+        return card[1:]
 
 
 class SimplePokerHandsTest(unittest.TestCase):
@@ -28,4 +31,11 @@ class SimplePokerHandsTest(unittest.TestCase):
         bestCard = sut.bestFromHand(["C10", "K6"])
 
         self.assertEquals("C10", bestCard)
+
+    def test_shouldReturnK10_whenGivenTwoCardsInvertedOrderInvertedColors(self):
+        sut = SimplePokerHands()
+
+        bestCard = sut.bestFromHand(["K10", "C6"])
+
+        self.assertEquals("K10", bestCard)
 
